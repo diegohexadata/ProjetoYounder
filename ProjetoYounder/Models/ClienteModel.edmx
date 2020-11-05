@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="YOUNDERModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="TBEnderecoPessoaFisica">
+          <Key>
+            <PropertyRef Name="EnderecoPessoaFisica" />
+          </Key>
+          <Property Name="EnderecoPessoaFisica" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idpessoafisica" Type="int" />
+          <Property Name="logradouro" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="numero" Type="smallint" />
+          <Property Name="bairro" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="cidade" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="uf" Type="char" MaxLength="2" />
+          <Property Name="cep" Type="char" MaxLength="8" />
+        </EntityType>
+        <EntityType Name="TBPessoaFisica">
+          <Key>
+            <PropertyRef Name="idpessoafisica" />
+          </Key>
+          <Property Name="idpessoafisica" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nome" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="CPF" Type="char" MaxLength="11" Nullable="false" />
+          <Property Name="DataNascimento" Type="date" Nullable="false" />
+          <Property Name="Sexo" Type="tinyint" Nullable="false" />
+          <Property Name="Telefone" Type="bigint" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TbSexo">
+          <Key>
+            <PropertyRef Name="idSexo" />
+          </Key>
+          <Property Name="idSexo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descricao" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="YOUNDERModelStoreContainer">
+          <EntitySet Name="TBEnderecoPessoaFisica" EntityType="Self.TBEnderecoPessoaFisica" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBPessoaFisica" EntityType="Self.TBPessoaFisica" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TbSexo" EntityType="Self.TbSexo" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="YOUNDERModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="TBEnderecoPessoaFisica">
+          <Key>
+            <PropertyRef Name="EnderecoPessoaFisica" />
+          </Key>
+          <Property Name="EnderecoPessoaFisica" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idpessoafisica" Type="Int32" />
+          <Property Name="logradouro" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="numero" Type="Int16" />
+          <Property Name="bairro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cidade" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="uf" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="cep" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TBPessoaFisica">
+          <Key>
+            <PropertyRef Name="idpessoafisica" />
+          </Key>
+          <Property Name="idpessoafisica" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CPF" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="DataNascimento" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Sexo" Type="Byte" Nullable="false" />
+          <Property Name="Telefone" Type="Int64" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TbSexo">
+          <Key>
+            <PropertyRef Name="idSexo" />
+          </Key>
+          <Property Name="idSexo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descricao" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="YOUNDEREntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TBEnderecoPessoaFisica" EntityType="Self.TBEnderecoPessoaFisica" />
+          <EntitySet Name="TBPessoaFisica" EntityType="Self.TBPessoaFisica" />
+          <EntitySet Name="TbSexo" EntityType="Self.TbSexo" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="YOUNDERModelStoreContainer" CdmEntityContainer="YOUNDEREntities">
+          <EntitySetMapping Name="TBEnderecoPessoaFisica">
+            <EntityTypeMapping TypeName="YOUNDERModel.TBEnderecoPessoaFisica">
+              <MappingFragment StoreEntitySet="TBEnderecoPessoaFisica">
+                <ScalarProperty Name="EnderecoPessoaFisica" ColumnName="EnderecoPessoaFisica" />
+                <ScalarProperty Name="idpessoafisica" ColumnName="idpessoafisica" />
+                <ScalarProperty Name="logradouro" ColumnName="logradouro" />
+                <ScalarProperty Name="numero" ColumnName="numero" />
+                <ScalarProperty Name="bairro" ColumnName="bairro" />
+                <ScalarProperty Name="cidade" ColumnName="cidade" />
+                <ScalarProperty Name="uf" ColumnName="uf" />
+                <ScalarProperty Name="cep" ColumnName="cep" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBPessoaFisica">
+            <EntityTypeMapping TypeName="YOUNDERModel.TBPessoaFisica">
+              <MappingFragment StoreEntitySet="TBPessoaFisica">
+                <ScalarProperty Name="idpessoafisica" ColumnName="idpessoafisica" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="CPF" ColumnName="CPF" />
+                <ScalarProperty Name="DataNascimento" ColumnName="DataNascimento" />
+                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+                <ScalarProperty Name="Telefone" ColumnName="Telefone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TbSexo">
+            <EntityTypeMapping TypeName="YOUNDERModel.TbSexo">
+              <MappingFragment StoreEntitySet="TbSexo">
+                <ScalarProperty Name="idSexo" ColumnName="idSexo" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
